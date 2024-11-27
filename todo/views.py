@@ -1,8 +1,20 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .models import Task
 
+def login_view(request):
+    "Login: a view  to validate if a user is validated or not"
+    if request.method == "POST":
+        form =  AuthenticationForm(request, data= request.POST)
+        if form.is_valid():
+            """Initialize to the response data to variables"""
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            
 
 @login_required
 def task_list(request):
