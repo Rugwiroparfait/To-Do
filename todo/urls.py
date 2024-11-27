@@ -7,4 +7,5 @@ urlpatterns = [
     path('login/', LoginView.as_view(template_name='todo/login.html'), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('signup/', views.signup, name='signup'),
+    path('terms/',views.terms_of_service, name='terms'),
 ]

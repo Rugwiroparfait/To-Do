@@ -40,3 +40,6 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'todo/signup.html', {'form': form})
+
+def terms_of_service(request):
+    return render(request, 'terms.html')
